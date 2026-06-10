@@ -22,14 +22,14 @@ nats --version
 
 ---
 
-## 1. Start the server (GOMEMLIMIT = 4 GB)
+## 1. Start the server (GOMEMLIMIT = 1 GB)
 
-`GOMEMLIMIT` is a Go runtime soft memory limit. It uses IEC units, so 4 GB is
-written `4GiB`.
+`GOMEMLIMIT` is a Go runtime soft memory limit. It uses IEC units, so 1 GB is
+written `1GiB`.
 
 ```bash
 cd KV_Performance
-GOMEMLIMIT=4GiB nats-server -c nats-server.conf
+GOMEMLIMIT=1GiB nats-server -c nats-server.conf
 ```
 
 Leave this running in its own terminal. JetStream data is written to
@@ -41,7 +41,7 @@ Leave this running in its own terminal. JetStream data is written to
 
 ---
 
-## 2. Create the two KV buckets
+## 2. Create KV bucket
 
 In a second terminal:
 
@@ -49,11 +49,6 @@ In a second terminal:
 nats kv add PERF01 --history=1 --storage=file --replicas=1
 ```
 
-Confirm they exist:
-
-```bash
-nats kv ls
-```
 
 ---
 
